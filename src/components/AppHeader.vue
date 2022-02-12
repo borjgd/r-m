@@ -35,6 +35,7 @@ export default {
 .app-header-title {
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
 }
 .nav {
   display: flex;
