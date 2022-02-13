@@ -20,17 +20,16 @@ export default {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #191919;
-}
-
 #app {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto Serif", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #c84b31;
-  max-width: 750px;
+}
+
+.layout {
+  max-width: 768px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 </style>
