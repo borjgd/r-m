@@ -8,15 +8,21 @@
       </div>
       <div class="nav">
         <nav class="nav-links">
-          <div class="nav-item">
+          <div v-if="windowWidth > 768" class="nav-item">
             <router-link class="app-header-title" to="/secreproject">
               Secret Project
             </router-link>
           </div>
-          <div class="nav-item">
+          <div v-if="windowWidth > 768" class="nav-item">
             <router-link class="app-header-title" to="/about">
               About
             </router-link>
+          </div>
+          <div v-if="windowWidth <= 768" class="nav-item">
+            <font-awesome-icon
+              class="toggle-side-menu"
+              icon="fa-solid fa-bars fa-4x"
+            />
           </div>
         </nav>
       </div>
@@ -26,6 +32,29 @@
 <script>
 export default {
   name: "AppHeader",
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  watch: {
+    windowWidth(newHeight) {
+      console.log(newHeight);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -53,5 +82,10 @@ export default {
 }
 .nav-item {
   padding: 0 10px;
+}
+
+.toggle-side-menu {
+  color: white;
+  font-size: 26px;
 }
 </style>

@@ -18,22 +18,33 @@
           </p>
         </div>
       </div>
+      <div class="home-roadmaps">
+        <RoadmapList />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import HelloWorld from "@/components/HelloWorld.vue";
+import RoadmapList from "@/components/RoadmapList.vue";
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    RoadmapList,
+  },
 };
 </script>
 <style scoped>
 .home {
   background-color: #191919;
+  background: linear-gradient(
+    to bottom,
+    rgb(7, 8, 27),
+    rgb(15, 3, 24) 80%,
+    #191919
+  );
   padding: 20px 0px;
 }
 .home-message {
