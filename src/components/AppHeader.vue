@@ -8,21 +8,38 @@
       </div>
       <div class="nav">
         <nav class="nav-links">
-          <div v-if="windowWidth > 768" class="nav-item">
+          <div v-if="!mobile" class="nav-item">
             <router-link class="app-header-title" to="/secreproject">
               Secret Project
             </router-link>
           </div>
-          <div v-if="windowWidth > 768" class="nav-item">
+          <div v-if="!mobile" class="nav-item">
             <router-link class="app-header-title" to="/about">
               About
             </router-link>
           </div>
-          <div v-if="windowWidth <= 768" class="nav-item">
+          <div v-if="mobile" @click="toggleSideBar" class="nav-item">
             <font-awesome-icon
               class="toggle-side-menu"
               icon="fa-solid fa-bars fa-4x"
             />
+          </div>
+          <div class="side-bar" v-if="showSideBar">
+            <router-link class="app-header-title" to="/">
+              Secret Project
+            </router-link>
+            <router-link class="app-header-title" to="/secreproject">
+              Secret Projects
+            </router-link>
+            <router-link class="app-header-title" to="/about">
+              About
+            </router-link>
+            <button class="btn" @click="toggleSideBar">
+              <font-awesome-icon
+                class="toggle-side-menu"
+                icon="fa-solid fa-xmark fa-4x"
+              />
+            </button>
           </div>
         </nav>
       </div>
@@ -35,6 +52,7 @@ export default {
   data() {
     return {
       windowWidth: window.innerWidth,
+      showSideBar: false,
     };
   },
   mounted() {
@@ -49,10 +67,13 @@ export default {
     onResize() {
       this.windowWidth = window.innerWidth;
     },
+    toggleSideBar() {
+      this.showSideBar = !this.showSideBar;
+    },
   },
-  watch: {
-    windowWidth(newHeight) {
-      console.log(newHeight);
+  computed: {
+    mobile: function () {
+      return this.windowWidth > 768 ? false : true;
     },
   },
 };
@@ -87,5 +108,29 @@ export default {
 .toggle-side-menu {
   color: white;
   font-size: 26px;
+}
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  position: fixed;
+  background-color: #191919;
+}
+.side-bar > ul {
+  list-style: none;
+}
+.side-bar > * {
+  margin-top: 25px;
+}
+
+.side-bar > .btn {
+  border-style: none;
+  background-color: #191919;
+  position: fixed;
+  top: 0px;
+  right: 45px;
+  margin-top: 20px;
 }
 </style>
