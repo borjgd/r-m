@@ -1,15 +1,32 @@
 <template>
   <div id="app">
-    <AppHeader />
-    <router-view />
+    <div v-if="!showSideBar">
+      <BaseHeader v-on:toggle-side-bar="toggleShowSideBar" />
+      <router-view />
+    </div>
+    <div v-else>
+      <BaseSideBar v-on:toggle-side-bar="toggleShowSideBar" />
+    </div>
   </div>
 </template>
 <script>
-import AppHeader from "@/components/AppHeader.vue";
+import BaseHeader from "@/components/UI/BaseHeader.vue";
+import BaseSideBar from "@/components/UI/BaseSideBar.vue";
 export default {
   name: "App",
+  data() {
+    return {
+      showSideBar: false,
+    };
+  },
   components: {
-    AppHeader,
+    BaseHeader,
+    BaseSideBar,
+  },
+  methods: {
+    toggleShowSideBar() {
+      this.showSideBar = !this.showSideBar;
+    },
   },
 };
 </script>

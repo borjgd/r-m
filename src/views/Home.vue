@@ -7,9 +7,9 @@
         </div>
         <div>
           <p class="home-message-text">
-            Secret project allows you to create your own secret projects
-            including as many steps as you need, organizing the steps in the
-            order you like and marking those steps completed already.
+            RM allows you to create your own RMs including as many steps as you
+            need, organizing the steps in the order you like and marking those
+            steps completed already.
           </p>
           <p class="home-message-text">
             This was thought to be a secret project focused on developers
@@ -38,13 +38,8 @@ export default {
 </script>
 <style scoped>
 .home {
-  background-color: #191919;
-  background: linear-gradient(
-    to bottom,
-    rgb(7, 8, 27),
-    rgb(15, 3, 24) 80%,
-    #191919
-  );
+  background-color: #06020d;
+  background: linear-gradient(to bottom, #06020d, #0b1222 50%, #06020d);
   padding: 20px 0px;
 }
 .home-message {
