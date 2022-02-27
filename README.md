@@ -1,4 +1,4 @@
-# roadmap-maker
+# rm
 
 ## Project setup
 ```
