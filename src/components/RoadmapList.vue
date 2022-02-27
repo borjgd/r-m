@@ -4,6 +4,9 @@
       <h2>{{ item.rmTitle }}</h2>
       <p>{{ item.rmResume }}</p>
     </a>
+    <a href="" class="rm-item rm-item-add">
+      <font-awesome-icon icon="fa-solid fa-circle-plus" size="2x" />
+    </a>
   </div>
 </template>
 <script>
@@ -15,22 +18,22 @@ export default {
         {
           id: "1",
           rmTitle: "2019",
-          rmResume: "RM for 2019",
+          rmResume: "Roadmap for 2019",
         },
         {
           id: "2",
           rmTitle: "2020",
-          rmResume: "RM for 2020",
+          rmResume: "Roadmap for 2020",
         },
         {
           id: "3",
           rmTitle: "2021",
-          rmResume: "RM for 2021",
+          rmResume: "Roadmap for 2021",
         },
         {
           id: "4",
           rmTitle: "2022",
-          rmResume: "RM for 2022",
+          rmResume: "Roadmap for 2022",
         },
       ],
     };
@@ -39,17 +42,26 @@ export default {
 </script>
 <style scoped>
 .rm {
-  padding: 10px 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  gap: 10px 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .rm {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .rm {
+    grid-template-columns: 1fr;
+  }
 }
 
 .rm-item {
   background-color: #130e1b;
   border-radius: 10px;
-  min-width: 310px;
-  margin: 10px 0px;
   padding: 10px 10px;
   color: white;
 }
@@ -61,5 +73,12 @@ export default {
 
 .rm-item > h2 {
   margin-bottom: 10px;
+}
+
+.rm-item-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
 }
 </style>
