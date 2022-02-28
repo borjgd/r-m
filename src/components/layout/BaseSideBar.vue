@@ -5,6 +5,7 @@
         <li>1</li>
         <li>2</li>
         <li>3</li>
+        <li @click="closeSideBar">X</li>
       </ul>
     </nav>
   </div>
@@ -12,6 +13,11 @@
 <script>
 export default {
   name: "BaseSideBar",
+  methods: {
+    closeSideBar() {
+      this.$emit("toggle-side-bar");
+    },
+  },
 };
 </script>
 <style scoped>

@@ -4,14 +4,16 @@
       <BaseHeader v-on:toggle-side-bar="toggleShowSideBar" />
       <router-view />
     </div>
-    <div v-else>
-      <BaseSideBar v-on:toggle-side-bar="toggleShowSideBar" />
-    </div>
+    <Transition name="fade">
+      <div v-if="showSideBar">
+        <BaseSideBar v-on:toggle-side-bar="toggleShowSideBar" />
+      </div>
+    </Transition>
   </div>
 </template>
 <script>
-import BaseHeader from "@/components/UI/BaseHeader.vue";
-import BaseSideBar from "@/components/UI/BaseSideBar.vue";
+import BaseHeader from "@/components/layout/BaseHeader.vue";
+import BaseSideBar from "@/components/layout/BaseSideBar.vue";
 export default {
   name: "App",
   data() {
@@ -48,5 +50,13 @@ export default {
   max-width: 768px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease-in;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-100%);
 }
 </style>
