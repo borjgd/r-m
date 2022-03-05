@@ -18,22 +18,22 @@ export default {
         {
           id: "1",
           rmTitle: "2019",
-          rmResume: "Roadmap for 2019",
+          rmResume: "RM for 2019",
         },
         {
           id: "2",
           rmTitle: "2020",
-          rmResume: "Roadmap for 2020",
+          rmResume: "RM for 2020",
         },
         {
           id: "3",
           rmTitle: "2021",
-          rmResume: "Roadmap for 2021",
+          rmResume: "RM for 2021",
         },
         {
           id: "4",
           rmTitle: "2022",
-          rmResume: "Roadmap for 2022",
+          rmResume: "RM for 2022",
         },
       ],
     };

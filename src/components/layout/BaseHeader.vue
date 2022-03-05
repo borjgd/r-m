@@ -1,27 +1,37 @@
 <template>
   <header id="app-header">
     <div class="app-header layout">
-      <div class="app-header-logo">
-        <router-link class="app-header-title" to="/">RM</router-link>
-      </div>
-      <div class="nav">
-        <nav class="nav-links">
-          <div v-if="!mobile" class="nav-item">
+      <nav class="nav">
+        <ul class="nav--list">
+          <li class="nav--logo">
+            <router-link class="app-header-title" to="/">RM</router-link>
+          </li>
+          <li class="nav--item" v-bind:class="{ active: showResponsiveNavbar }">
             <router-link class="app-header-title" to="/rm">RM</router-link>
-          </div>
-          <div v-if="!mobile" class="nav-item">
+          </li>
+          <li class="nav--item" v-bind:class="{ active: showResponsiveNavbar }">
             <router-link class="app-header-title" to="/about">
               About
             </router-link>
-          </div>
-          <div v-if="mobile" @click="toggleSideBar" class="nav-item">
+          </li>
+          <li
+            v-if="!showResponsiveNavbar"
+            class="nav--toggle"
+            @click="toggleSideBar"
+          >
             <font-awesome-icon
               class="toggle-side-menu"
               icon="fa-solid fa-bars fa-4x"
             />
-          </div>
-        </nav>
-      </div>
+          </li>
+          <li v-else class="nav--toggle" @click="toggleSideBar">
+            <font-awesome-icon
+              class="toggle-side-menu"
+              icon="fa-solid fa-xmark fa-4x"
+            />
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 </template>
@@ -31,7 +41,7 @@ export default {
   data() {
     return {
       windowWidth: window.innerWidth,
-      showSideBar: false,
+      showResponsiveNavbar: false,
     };
   },
   mounted() {
@@ -47,7 +57,7 @@ export default {
       this.windowWidth = window.innerWidth;
     },
     toggleSideBar() {
-      this.$emit("toggle-side-bar");
+      this.showResponsiveNavbar = !this.showResponsiveNavbar;
     },
   },
   computed: {
@@ -67,49 +77,103 @@ export default {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.app-header-title {
+
+.nav {
+  width: 100%;
+  padding: 5px 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
   color: white;
   text-decoration: none;
-  text-transform: uppercase;
-}
-.nav {
-  display: flex;
-  align-items: center;
-}
-.nav-links {
-  display: flex;
-  padding: 0 10px;
-}
-.nav-item {
-  padding: 0 10px;
 }
 
-.toggle-side-menu {
-  color: white;
+a:hover {
+  text-decoration: underline;
+}
+
+.nav--list li {
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
+}
+
+.nav--logo a:hover {
+  text-decoration: none;
+}
+
+.nav--logo a,
+.nav--toggle svg {
   font-size: 26px;
 }
-.side-bar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  inset: 0;
-  position: fixed;
-  background-color: #151d3b;
-}
-.side-bar > ul {
-  list-style: none;
-}
-.side-bar > * {
-  margin-top: 25px;
+
+.nav--toggle svg {
+  color: white;
+  cursor: pointer;
 }
 
-.side-bar > .btn {
-  border-style: none;
-  background-color: #191919;
-  position: fixed;
-  top: 0px;
-  right: 45px;
-  margin-top: 20px;
+/* Mobile menu */
+.nav--list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav--toggle {
+  order: 1;
+}
+.nav--item {
+  width: 100%;
+  text-align: center;
+  order: 3;
+  display: none;
+}
+.nav--item.active {
+  display: block;
+}
+
+.nav--item.active:hover {
+  background-color: #1e1b25;
+}
+
+/* Tablet menu */
+@media all and (min-width: 600px) {
+  .nav--list {
+    justify-content: center;
+  }
+  .nav--logo {
+    flex: 1;
+  }
+  .nav--toggle {
+    flex: 1;
+    text-align: right;
+  }
+  .nav--toggle {
+    order: 2;
+  }
+}
+
+/* Desktop menu */
+@media all and (min-width: 900px) {
+  .nav--item {
+    display: block;
+    width: auto;
+  }
+  .nav--toggle {
+    display: none;
+  }
+  .nav--logo {
+    order: 0;
+  }
+  .nav--item {
+    order: 1;
+  }
+  .nav--list li {
+    padding: 15px 10px;
+  }
 }
 </style>
