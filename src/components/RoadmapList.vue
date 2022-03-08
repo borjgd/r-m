@@ -4,7 +4,7 @@
       <h2>{{ item.rmTitle }}</h2>
       <p>{{ item.rmResume }}</p>
     </a>
-    <a href="" class="rm-item rm-item-add">
+    <a href="" title="Add RM" class="rm-item rm-item-add">
       <font-awesome-icon icon="fa-solid fa-circle-plus" size="2x" />
     </a>
   </div>

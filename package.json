@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "mockapi": "npx json-server --watch db.json",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -12,7 +13,9 @@
     "@fortawesome/free-regular-svg-icons": "^6.0.0",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/vue-fontawesome": "^2.0.6",
+    "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "json-server": "^0.17.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
