@@ -1,42 +1,32 @@
 <template>
   <div class="rm">
-    <a class="rm-item" v-for="item in rmResume" v-bind:key="item.id">
-      <h2>{{ item.rmTitle }}</h2>
-      <p>{{ item.rmResume }}</p>
+    <a class="rm-item" v-for="item in rmList" v-bind:key="item.id">
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.description }}</p>
     </a>
     <a href="" title="Add RM" class="rm-item rm-item-add">
-      <font-awesome-icon icon="fa-solid fa-circle-plus" size="2x" />
+      <font-awesome-icon
+        icon="fa-solid fa-circle-plus"
+        size="2x"
+        title="Add new RM"
+      />
+      <p>Add new RM</p>
     </a>
   </div>
 </template>
 <script>
+import { getRM } from "../api/lib/rm.js";
 export default {
   name: "RoadmapList",
   data() {
     return {
-      rmResume: [
-        {
-          id: "1",
-          rmTitle: "2019",
-          rmResume: "RM for 2019",
-        },
-        {
-          id: "2",
-          rmTitle: "2020",
-          rmResume: "RM for 2020",
-        },
-        {
-          id: "3",
-          rmTitle: "2021",
-          rmResume: "RM for 2021",
-        },
-        {
-          id: "4",
-          rmTitle: "2022",
-          rmResume: "RM for 2022",
-        },
-      ],
+      rmList: [],
     };
+  },
+  async created() {
+    let res = await getRM();
+    this.rmList = res.data;
+    console.log(res.data);
   },
 };
 </script>
@@ -77,8 +67,10 @@ export default {
 
 .rm-item-add {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   padding: 10px 10px;
+  text-decoration: none;
 }
 </style>
