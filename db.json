@@ -1,5 +1,32 @@
 {
     "rm": [
-        
+        {
+            "title": "RM de 2021",
+            "description": "All the technologies I have learnt in 2021",
+            "steps": [
+                {
+                    "title": "Learn Node JS",
+                    "description": "Learn how to do a backend with Node JS",
+                    "priority": "1",
+                    "goals": [
+                        {
+                            "description": "Learn the basics of NodeJS",
+                            "priority": "1"
+                        },
+                        {
+                            "description": "Learn Express.js",
+                            "priority": "1"
+                        },
+                        {
+                            "description": "Learn passport.js",
+                            "priority": "2"
+                        }
+                    ]
+                },
+                {
+
+                }
+            ]
+        }
     ]
 }
